@@ -7,11 +7,13 @@
 ##the inversed matrix calculated from 'x' matrix.
 
 makeCacheMatrix <- function(x = matrix()) {
+    #initializing the cached value
     inv <- NULL
     set <- function(y) {
         x <<- y
         inv <<- NULL
     }
+    #fetch the value of matrix
     get <- function() x
     setInverse <- function(inverse) inv <<- inverse
     getInverse <- function() inv
@@ -34,6 +36,7 @@ cacheSolve <- function(x, ...) {
         message("getting cached data")
         return(inv)
     }
+    #create matrix since it doesn't exist
     mat <- x$get()
     inv <- solve(mat, ...)
     x$setInverse(inv)
